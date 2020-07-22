@@ -1,14 +1,33 @@
-<p><%= @scientist.name %></p>
-<p><%= @scientist.field_of_study %></p>
-Missions:<br>
+<h1><%= @scientist.name %></h1>
+
+
+<p><strong>Field of Study: </strong>
+<%= @scientist.field_of_study %></p>
+
+
+<% if @scientist.missions.count > 0 %>
+<strong>Missions:</strong><br>
 <% @scientist.missions.each do |mission| %>
     <%= link_to mission.name, mission_path(mission) %><br>
 <% end %> 
+<% else %>
+    Hasn't been on a mission
+<% end %>
 <br><br>
-Planets visited:<br>
-<% @scientist.planets.each do |p|%>
-<%= link_to p.name, planet_path(p) %><br>
+
+
+<% if @scientist.planets.count > 0 %>
+    <strong>Planets visited:</strong><br>
+    <% @scientist.planets.each do |p|%>
+    <%= link_to p.name, planet_path(p) %><br>
+    <% end %>
+<% else %>
+    Hasn't been on a planet
 <% end %>
 <br>
 <br>
-<%= link_to 'Destroy', scientist_path(@scientist), data: { confirm: 'Are you sure?'}, :method => :delete %>
+<%= button_to 'Edit', edit_scientist_path(@scientist), method: "get" %> 
+<br>
+<%= button_to 'Delete', scientist_path(@scientist), data: {:confirm => "Are you sure?"}, method: "delete" %> 
+<br>
+<%= button_to 'Back', scientists_path, method: "get" %>

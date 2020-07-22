@@ -1,4 +1,4 @@
 <h1>Duke And Aian</h1>
 
-There are <%= pluralize(@scientists.count, "scientist") %><br>
-There are <%= pluralize(@planets.count, "planet") %>
+<%= link_to "There are #{pluralize(@scientists.count, "scientist")}", scientists_path %><br>
+<%= link_to "There are #{pluralize(@planets.count, "planet")}", scientists_path %><br>
