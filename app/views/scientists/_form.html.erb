@@ -1,0 +1,25 @@
+<% if flash[:user_error] %>
+    <div id="error_explanation">
+        <h2>    
+            <%= pluralize(flash[:user_error].count, "error") %>
+      prohibited this scientist from being saved:
+    </h2>
+ 
+    <ul>
+    <% flash[:user_error].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @scientist do |s| %>
+
+<label>Name:</label>
+<%= s.text_field :name %><br><br>
+
+<label>Field of Study:</label>
+<%= s.text_field :field_of_study %><br><br>
+
+<%= s.submit "Save Scientist" %>
+<% end %>

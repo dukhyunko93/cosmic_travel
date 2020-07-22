@@ -1,0 +1,14 @@
+<p><%= @scientist.name %></p>
+<p><%= @scientist.field_of_study %></p>
+Missions:<br>
+<% @scientist.missions.each do |mission| %>
+    <%= link_to mission.name, mission_path(mission) %><br>
+<% end %> 
+<br><br>
+Planets visited:<br>
+<% @scientist.planets.each do |p|%>
+<%= link_to p.name, planet_path(p) %><br>
+<% end %>
+<br>
+<br>
+<%= link_to 'Destroy', scientist_path(@scientist), data: { confirm: 'Are you sure?'}, :method => :delete %>

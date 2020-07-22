@@ -1,0 +1,27 @@
+<h1>Scientists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Field of Study</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @scientists.each do |scientist| %>
+    <tr>
+      <td><%= scientist.name %></td>
+      <td><%= scientist.field_of_study %></td>
+      <td><%= link_to 'Show', scientist %></td>
+      <td><%= link_to 'Edit', edit_scientist_path(scientist) %></td>
+      <td><%= link_to 'Destroy', scientist_path(scientist), data: { confirm: 'Are you sure?'}, :method => :delete %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<%= button_to 'New Scientist', new_scientist_path, :method => 'get' %>
+
+
